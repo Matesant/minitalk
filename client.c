@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:05:12 by matesant          #+#    #+#             */
-/*   Updated: 2023/12/07 14:16:41 by matesant         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:21:20 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	send_signal(unsigned char message, int pid)
 {
 	int	i;
 
-	(void)pid;
 	i = 8;
 	while (i--)
 	{
@@ -46,5 +45,6 @@ void	send_signal(unsigned char message, int pid)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
+		sleep(1);
 	}
 }
