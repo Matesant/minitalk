@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:03:30 by matesant          #+#    #+#             */
-/*   Updated: 2023/12/11 16:28:15 by matesant         ###   ########.fr       */
+/*   Created: 2023/07/24 11:42:14 by matesant          #+#    #+#             */
+/*   Updated: 2023/08/11 15:09:35 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include "libft.h"
 
-void	handler(int sig)
+size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 {
-	if (sig == SIGUSR1)
-		write(1, "1", 1);
-	else if (sig == SIGUSR2)
-		write(1, "0", 1);
-}
+	unsigned int	i;
 
-int	main(void)
-{
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
-	printf("PID:%d\n", getpid());
-	while (1)
+	i = 0;
+	if (n == 0)
+		return (ft_strlen(src));
+	while (src[i] != '\0' && i < (n - 1))
 	{
-		pause();
+		dst[i] = src[i];
+		i++;
 	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }

@@ -1,50 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:05:12 by matesant          #+#    #+#             */
-/*   Updated: 2023/12/11 16:21:20 by matesant         ###   ########.fr       */
+/*   Created: 2023/12/04 17:03:30 by matesant          #+#    #+#             */
+/*   Updated: 2023/12/11 16:28:15 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <sys/types.h>
 #include <unistd.h>
 
-void	send_signal(unsigned char message, int pid);
-
-int	main(int argc, char **argv)
+void	handler(int sig)
 {
-	char	*message;
-
-	if (argc == 3)
-	{
-		argc = atoi(argv[1]);
-		message = argv[2];
-		while (*message)
-		{
-			send_signal(*message, argc);
-			message++;
-		}
-	}
+	if (sig == SIGUSR1)
+		write(1, "1", 1);
+	else if (sig == SIGUSR2)
+		write(1, "0", 1);
 }
 
-void	send_signal(unsigned char message, int pid)
+int	main(void)
 {
-	int	i;
-
-	i = 8;
-	while (i--)
+	signal(SIGUSR1, handler);
+	signal(SIGUSR2, handler);
+	printf("PID:%d\n", getpid());
+	while (1)
 	{
-		if (message >> i & 1)
-			kill(pid, SIGUSR1);
-		else
-			kill(pid, SIGUSR2);
-		sleep(1);
+		pause();
 	}
 }
