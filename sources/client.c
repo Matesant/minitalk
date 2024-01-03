@@ -6,15 +6,11 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:05:12 by matesant          #+#    #+#             */
-/*   Updated: 2023/12/11 16:21:20 by matesant         ###   ########.fr       */
+/*   Updated: 2024/01/03 11:53:09 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include "../includes/minitalk.h"
 
 void	send_signal(unsigned char message, int pid);
 
@@ -44,7 +40,7 @@ void	send_signal(unsigned char message, int pid)
 		if (message >> i & 1)
 			kill(pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2);
-		sleep(1);
+			kill(pid, SIGUSR1);
+		usleep(1000000);
 	}
 }

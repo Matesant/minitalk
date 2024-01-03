@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:03:30 by matesant          #+#    #+#             */
-/*   Updated: 2024/01/03 11:53:16 by matesant         ###   ########.fr       */
+/*   Created: 2024/01/03 10:22:28 by matesant          #+#    #+#             */
+/*   Updated: 2024/01/03 11:40:36 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-void	handler(int sig)
-{
-	if (sig == SIGUSR1)
-		write(1, "1", 1);
-	else if (sig == SIGUSR2)
-		write(1, "0", 1);
-}
+# include <signal.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/types.h>
+# include <unistd.h>
+# include "../42_libft/libft.h"
+# include "../Printf/ft_printf.h"
 
-int	main(void)
-{
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
-	printf("PID:%d\n", getpid());
-	while (1)
-	{
-		pause();
-	}
-}
+#endif

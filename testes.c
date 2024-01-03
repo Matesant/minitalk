@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   testes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:03:30 by matesant          #+#    #+#             */
-/*   Updated: 2024/01/03 11:53:16 by matesant         ###   ########.fr       */
+/*   Created: 2024/01/03 12:05:10 by matesant          #+#    #+#             */
+/*   Updated: 2024/01/03 12:16:21 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include <signal.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+int		g_count = 0;
 
 void	handler(int sig)
 {
-	if (sig == SIGUSR1)
-		write(1, "1", 1);
-	else if (sig == SIGUSR2)
-		write(1, "0", 1);
+	printf("CAPTADO PATRAO APERTA DENOVO AE");
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
-	printf("PID:%d\n", getpid());
+	signal(SIGINT, handler);
 	while (1)
 	{
 		pause();
 	}
+	return (0);
 }

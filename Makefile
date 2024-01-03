@@ -7,9 +7,11 @@ SOURCE_SERVER	:=  sources/server.c
 
 SOURCE_CLIENT	:=  sources/client.c
 
+HEADER	:= includes/minitalk.h
+
 PRINTF:= ./Printf/libftprintf.a
 LIBFT:= ./42_libft/libft.a
-PRINTF := ./Printf/libftprintf.a
+42LIBS:= $(PRINTF) $(LIBFT)
 
 BLUE = \033[1;34m
 RED=\033[0;31m
@@ -28,11 +30,11 @@ $(PRINTF):
 
 $(SERVER): $(SOURCE_SERVER)
 	@printf "$(BLUE)Compiling $(SERVER)...$(END)\n"
-	@$(CC) $(CFLAGS) $(SOURCE_SERVER) -L 42_libft -lft -o $(SERVER)
+	@$(CC) $(CFLAGS) $(SOURCE_SERVER) $(42LIBS) -o $(SERVER)
 
 $(CLIENT): $(SOURCE_CLIENT)
 	@printf "$(BLUE)Compiling $(CLIENT)...$(END)\n"
-	@$(CC) $(CFLAGS) $(SOURCE_CLIENT) -L 42_libft -lft -o $(CLIENT)
+	@$(CC) $(CFLAGS) $(SOURCE_CLIENT) $(42LIBS) -o $(CLIENT)
 	@echo "$(GREEN)$(SERVER) and $(CLIENT) are ready to use!$(END)\n"
 
 clean:
