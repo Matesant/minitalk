@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:05:12 by matesant          #+#    #+#             */
-/*   Updated: 2024/01/03 14:38:30 by matesant         ###   ########.fr       */
+/*   Updated: 2024/01/03 14:40:15 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ int	main(int argc, char **argv)
 			send_signal(*message, pid);
 			message++;
 		}
+		ft_printf("Message received by server\n");
 	}
 }
