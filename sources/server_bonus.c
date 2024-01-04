@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:03:30 by matesant          #+#    #+#             */
-/*   Updated: 2024/01/03 14:38:21 by matesant         ###   ########.fr       */
+/*   Updated: 2024/01/04 11:29:07 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	handler(int signal, siginfo_t *info, void *context)
 {
-	static int	bytes;
-	static int	bits;
+	static int	bytes = 0;
+	static int	bits = 0;
 
-	bytes = 0;
-	bits = 0;
 	context = NULL;
 	if (signal == SIGUSR1)
 		bytes += 0 << bits;
