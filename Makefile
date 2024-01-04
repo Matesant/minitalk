@@ -5,15 +5,15 @@ CLIENT = client
 CLIENT_BONUS = client_bonus
 CFLAGS	:= -Wextra -Wall -Werror
 
-SOURCE_SERVER	:=  sources/server.c
+SOURCE_SERVER	:=  ./sources/server.c
 
-SOURCE_CLIENT	:=  sources/client.c
+SOURCE_CLIENT	:=  ./sources/client.c
 
-SOURCE_SERVER_BONUS	:=  sources/server_bonus.c
+SOURCE_SERVER_BONUS	:=  ./sources/server_bonus.c
 
-SOURCE_CLIENT_BONUS	:=  sources/client_bonus.c
+SOURCE_CLIENT_BONUS	:=  ./sources/client_bonus.c
 
-HEADER	:= includes/minitalk.h
+HEADER	:= ./includes/minitalk.h
 
 PRINTF:= ./Printf/libftprintf.a
 LIBFT:= ./42_libft/libft.a
@@ -67,6 +67,7 @@ fclean:
 	@rm -rf $(CLIENT)
 	@rm -rf $(SERVER_BONUS)
 	@rm -rf $(CLIENT_BONUS)
+	@printf "$(GREEN)All cleaned!$(END)\n"
 
 re: fclean all
 

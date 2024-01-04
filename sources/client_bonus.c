@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:05:12 by matesant          #+#    #+#             */
-/*   Updated: 2024/01/04 11:50:16 by matesant         ###   ########.fr       */
+/*   Updated: 2024/01/04 15:04:23 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int		g_exit = 0;
 
-void	handle(int signal)
+void	ft_handle(int signal)
 {
 	if (signal == SIGUSR1)
 		g_exit = 1;
 }
 
-void	send_signal(unsigned char message, int pid)
+void	ft_send_signal(unsigned char message, int pid)
 {
 	int	bits;
 
@@ -47,11 +47,11 @@ int	main(int argc, char **argv)
 	{
 		pid = atoi(argv[1]);
 		message = argv[2];
-		signal(SIGUSR1, handle);
-		signal(SIGUSR2, handle);
+		signal(SIGUSR1, ft_handle);
+		signal(SIGUSR2, ft_handle);
 		while (*message)
 		{
-			send_signal(*message, pid);
+			ft_send_signal(*message, pid);
 			message++;
 		}
 		ft_printf("Message received by server\n");
