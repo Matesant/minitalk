@@ -57,6 +57,12 @@ By launching it, this will show "Your message string" on the server window.
 
 ## BONUS
 
+To compile, go to the project path and run:
+
+```shell
+$ make bonus
+```
+
 The bonus functionality operates similarly to the mandatory features, with the key difference being that the client confirms the receipt of messages sent by the server.
 
 ```shell
